@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyasu T. Araya — AI & Computer Vision Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e17;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.15);
+    --text: #e8edf5;
+    --muted: #7d8fa8;
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --accent3: #8b5cf6;
+    --green: #10b981;
+    --gold: #f59e0b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(10,14,23,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-label::before { content: '// '; opacity: 0.5; }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent2); }
+
+  .hero-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+
+  .btn-ghost:hover {
+    background: var(--surface);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-photo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .photo-frame {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 2px solid var(--border2);
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 6px rgba(6,182,212,0.08), 0 0 0 12px rgba(59,130,246,0.05);
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .photo-frame:hover {
+    box-shadow: 0 0 0 6px rgba(6,182,212,0.18), 0 0 0 14px rgba(59,130,246,0.1);
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .stat-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .stat-card.blue::before { background: var(--accent); }
+  .stat-card.cyan::before { background: var(--accent2); }
+  .stat-card.purple::before { background: var(--accent3); }
+  .stat-card.green::before { background: var(--green); }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  .stat-card.blue .stat-num { color: var(--accent); }
+  .stat-card.cyan .stat-num { color: var(--accent2); }
+  .stat-card.purple .stat-num { color: var(--accent3); }
+  .stat-card.green .stat-num { color: var(--green); }
+
+  .bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.12;
+  }
+
+  .glow1 {
+    width: 600px;
+    height: 600px;
+    background: var(--accent);
+    top: -200px;
+    right: -100px;
+  }
+
+  .glow2 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent3);
+    bottom: -100px;
+    left: 200px;
+  }
+
+  section {
+    padding: 6rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  h2 em { font-style: italic; color: var(--accent2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-group:hover { border-color: var(--border2); }
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    transition: all 0.15s;
+  }
+
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .exp-item {
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0.45rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent2);
+    border: 2px solid var(--bg);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+  }
+
+  .exp-role {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem;
+    color: var(--muted);
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+
+  .exp-company {
+    font-size: 0.88rem;
+    color: var(--accent2);
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-bullets { list-style: none; }
+
+  .exp-bullets li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: radial-gradient(circle at 60% 0%, rgba(59,130,246,0.06) 0%, transparent 60%);
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .project-card:hover::after { opacity: 1; }
+
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .project-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .tech-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    background: rgba(59,130,246,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(59,130,246,0.25);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .proj-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.15s;
+    position: relative;
+    z-index: 2;
+  }
+
+  .proj-link:hover { color: var(--accent2); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .edu-card:hover { border-color: var(--border2); }
+
+  .edu-school {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-degree {
+    font-size: 0.88rem;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+
+  .edu-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .edu-gpa { color: var(--green); }
+
+  .edu-courses {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .edu-courses-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .edu-courses-list {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .cert-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-2px);
+  }
+
+  .cert-title {
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+
+  .cert-org {
+    font-size: 0.85rem;
+    color: var(--accent2);
+    margin-bottom: 0.7rem;
+  }
+
+  .cert-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+  }
+
+  .cert-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .cert-link:hover { color: var(--accent2); }
+
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .award-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .award-item:hover { border-color: var(--gold); }
+
+  .award-medal {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .award-medal.gold {
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.3);
+  }
+
+  .award-medal.bronze {
+    background: rgba(180,120,80,0.15);
+    border: 1px solid rgba(180,120,80,0.3);
+  }
+
+  .award-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .award-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .contact-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .contact-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border2);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.88rem;
+    transition: all 0.2s;
+    background: var(--bg);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .contact-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-photo-wrap { flex-direction: row; justify-content: center; }
+    .photo-frame { width: 160px; height: 160px; }
+    section { padding: 4rem 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">ETA.portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="bg-glow glow1"></div>
+  <div class="bg-glow glow2"></div>
+
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">AI & Computer Vision Engineer</div>
+      <h1>Eyasu T.<br><em>Araya</em></h1>
+      <p class="hero-desc">
+        Computer and Information Science Master's student at the University of Luxembourg.
+        Specializing in artificial intelligence and computer vision. Bachelor's in IT Networking.
+        Looking for jobs in AI and Computer Vision, Software Development, or Network Engineering.
+      </p>
+      <div class="hero-cta">
+        <a href="mailto:eyasuaraya0@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="https://github.com/EyasuTes" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="photo-frame">
+        <img src="resume.jpeg" alt="Eyasu Araya" class="profile-img">
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card blue">
+        <div class="stat-num">15.3</div>
+        <div class="stat-label">Master's GPA /20</div>
+      </div>
+      <div class="stat-card cyan">
+        <div class="stat-num">3.91</div>
+        <div class="stat-label">Bachelor's GPA /4.0</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section id="skills" class="fade-in">
+  <span class="section-tag">Expertise</span>
+  <h2>Technical <em>Skills</em></h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Machine Learning & AI</div>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Computer Vision</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Programming & Data</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Apache Spark</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Robotics & Systems</div>
+      <div class="skill-tags">
+        <span class="tag">ROS2</span>
+        <span class="tag">CARLA</span>
+        <span class="tag">YOLO</span>
+        <span class="tag">Linux</span>
+        <span class="tag">SLAM</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Web Development</div>
+      <div class="skill-tags">
+        <span class="tag">React</span>
+        <span class="tag">Express.js</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Full-Stack</span>
+        <span class="tag">Stripe</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Tools & Infrastructure</div>
+      <div class="skill-tags">
+        <span class="tag">Git / GitHub</span>
+        <span class="tag">Virtualization</span>
+        <span class="tag">FAISS</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Networking & Cloud</div>
+      <div class="skill-tags">
+        <span class="tag">CCNA</span>
+        <span class="tag">Huawei FusionCompute</span>
+        <span class="tag">Cloud Admin</span>
+        <span class="tag">Server Config</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="experience" class="fade-in">
+  <span class="section-tag">Career</span>
+  <h2>Professional <em>Experience</em></h2>
+  <div class="timeline">
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Research Assistant</div>
+        <div class="exp-date">Mar 2025 – Present</div>
+      </div>
+      <div class="exp-company">University of Luxembourg · Luxembourg</div>
+      <ul class="exp-bullets">
+        <li>Trained computer vision models on IAPS datasets; developed MLP/CNN models for cognitive fNIRS data analysis</li>
+        <li>Predicted emotional states using neural signal processing and deep learning techniques</li>
+        <li>Evaluated and compared Federated Learning algorithms for distributed model training</li>
+        <li>Improved performance of 3D Gaussian Splatting models through wavelet-based loss functions</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Web / AI Developer</div>
+        <div class="exp-date">Jan 2024 – Jan 2025</div>
+      </div>
+      <div class="exp-company">Fujairah Research Center · Dubai, UAE</div>
+      <ul class="exp-bullets">
+        <li>Built and deployed full-stack web applications using React, Express.js, and SQL databases at production scale</li>
+        <li>Designed RESTful APIs for authentication, data processing, and business logic</li>
+        <li>Integrated Stripe payments; deployed mobile apps on App Store and Play Store</li>
+        <li>Optimized cloud-hosted applications, improving reliability and performance</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Cloud Computing & Systems Admin (Intern)</div>
+        <div class="exp-date">Aug 2023 – Jan 2024</div>
+      </div>
+      <div class="exp-company">Huawei Telecom · Dubai, UAE</div>
+      <ul class="exp-bullets">
+        <li>Installed, configured, and maintained server OS and enterprise infrastructure</li>
+        <li>Provisioned storage resources; created and managed VMs on Huawei FusionCompute</li>
+        <li>Configured network infrastructure including routers and switches</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">IT Help Desk Intern</div>
+        <div class="exp-date">Jun 2023 – Aug 2023</div>
+      </div>
+      <div class="exp-company">Fujairah Aviation Academy · Dubai, UAE</div>
+      <ul class="exp-bullets">
+        <li>Diagnosed and resolved internet connectivity and hardware/software issues for end users</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects" class="fade-in">
+  <span class="section-tag">Work</span>
+  <h2>Featured <em>Projects</em></h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01 / Robotics</div>
+      <div class="project-name">Autonomous Drone Path Planning & Navigation</div>
+      <div class="project-desc">
+        Modular ROS2-based path planning system for autonomous aerial robots with collision-free navigation in dynamic environments. Implemented multi-query PRM with A* search and obstacle-aware cost functions.
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">ROS2</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">A*</span>
+        <span class="tech-badge">PRM</span>
+        <span class="tech-badge">SLAM</span>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="https://youtu.be/1BOlekyDviU" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02 / Autonomous Vehicles</div>
+      <div class="project-name">Self-Driving Car Simulation System</div>
+      <div class="project-desc">
+        Autonomous driving system in CARLA for navigation, lane keeping, and traffic compliance. A*-based path planning, PID control for trajectory tracking, and YOLO-powered real-time perception.
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">CARLA</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">YOLO</span>
+        <span class="tech-badge">PID</span>
+        <span class="tech-badge">A*</span>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="https://youtu.be/4uEzrLnhkl4" target="_blank" rel="noopener noreferrer">Demo ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03 / Computer Vision</div>
+      <div class="project-name">Human Detection in Disaster Zones</div>
+      <div class="project-desc">
+        AI system to detect humans in drone-captured disaster images for faster rescue operations. YOLO-based object detection with CNN heatmap model for localization, trained on large-scale diverse datasets.
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">PyTorch</span>
+        <span class="tech-badge">YOLO</span>
+        <span class="tech-badge">CNN</span>
+        <span class="tech-badge">Computer Vision</span>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="https://github.com/EyasuTes/AI-for-Human-Detection-in-Disasters" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04 / NLP / RAG</div>
+      <div class="project-name">HPC Chatbot — RAG Information Assistant</div>
+      <div class="project-desc">
+        Chatbot for ULHPC using Retrieval-Augmented Generation to answer user queries. Semantic search with FAISS/Pinecone vector embeddings over HPC documentation, integrated with DeepSeek LLM.
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">RAG</span>
+        <span class="tech-badge">FAISS</span>
+        <span class="tech-badge">Pinecone</span>
+        <span class="tech-badge">DeepSeek</span>
+      </div>
+      <div class="project-links">
+        <a class="proj-link" href="https://github.com/EyasuTes/DeepHPC" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education" class="fade-in">
+  <span class="section-tag">Academic Background</span>
+  <h2>Education &amp; <em>Background</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-school">University of Luxembourg</div>
+      <div class="edu-degree">M.Sc. Computer and Information Science</div>
+      <div class="edu-meta">
+        <span>2024 – Present</span>
+        <span class="edu-gpa">GPA: 15.30 / 20</span>
+      </div>
+      <div class="edu-courses">
+        <div class="edu-courses-label">Key Courses</div>
+        <div class="edu-courses-list">
+          Computer Vision &amp; Image Analysis (19/20) · Machine Learning (18/20) · Deep Learning (16.7/20) · Big Data Analytics · Autonomous Robot Software · Connected &amp; Autonomous Vehicles
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-school">HCT University, Dubai</div>
+      <div class="edu-degree">B.Sc. Computer Networking (IT)</div>
+      <div class="edu-meta">
+        <span>2019 – 2023</span>
+        <span class="edu-gpa">GPA: 3.91 / 4.0</span>
+      </div>
+      <div class="edu-courses">
+        <div class="edu-courses-label">Highlights</div>
+        <div class="edu-courses-list">
+          Strong foundation in networking, systems, cloud infrastructure, and practical enterprise technologies.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="certificates" class="fade-in">
+  <span class="section-tag">Learning</span>
+  <h2>Certificates &amp; <em>Credentials</em></h2>
+
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-title">Deep Learning Specialization</div>
+      <div class="cert-org">DeepLearning.AI (Coursera)</div>
+      <div class="cert-date">Feb 2024</div>
+      <a class="cert-link" href="https://coursera.org/share/da7b2eb20412da8670a10d74bb10ae6b" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-title">Artificial Intelligence Course</div>
+      <div class="cert-org">Samsung Innovation Campus</div>
+      <div class="cert-date">May 2023</div>
+      <a class="cert-link" href="https://drive.google.com/file/d/1-7CBUEOGCH6cXzewUCV4rIQhQGXRideM/view" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-title">CCNA: Enterprise Networking, Security, and Automation</div>
+      <div class="cert-org">Cisco</div>
+      <div class="cert-date">Dec 2021</div>
+      <a class="cert-link" href="https://www.credly.com/badges/f7140112-4acd-4e45-a7fb-ce30b115a096?source=linked_in_profile" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-title">CCNA: Switching, Routing, and Wireless Essentials</div>
+      <div class="cert-org">Cisco</div>
+      <div class="cert-date">Dec 2021</div>
+      <a class="cert-link" href="https://www.credly.com/badges/2599f248-7e81-48fe-88eb-2ff6a48e5f6c?source=linked_in_profile" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-title">CCNA: Introduction to Networks</div>
+      <div class="cert-org">Cisco</div>
+      <div class="cert-date">Nov 2021</div>
+      <a class="cert-link" href="https://www.credly.com/badges/2599f248-7e81-48fe-88eb-2ff6a48e5f6c?source=linked_in_profile" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="fade-in" style="padding-top: 4rem; padding-bottom: 4rem;">
+  <span class="section-tag">Recognition</span>
+  <h2>Honours &amp; <em>Awards</em></h2>
+  <div class="awards-list">
+    <div class="award-item">
+      <div class="award-medal gold">🥇</div>
+      <div>
+        <div class="award-title">1st Prize — Huawei ICT Global Computer Networking Competition</div>
+        <div class="award-sub">Shenzhen, China · May 2023</div>
+      </div>
+    </div>
+
+    <div class="award-item">
+      <div class="award-medal bronze">🥉</div>
+      <div>
+        <div class="award-title">3rd Prize — Huawei ICT Regional Computer Networking Competition</div>
+        <div class="award-sub">Muscat, Oman · December 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact" class="fade-in" style="padding-top: 5rem; padding-bottom: 6rem;">
+  <div class="contact-section">
+    <span class="section-tag" style="display: block; margin-bottom: 1rem;">Let's Connect</span>
+    <h2 style="margin-bottom: 1rem;">Open to <em>Opportunities</em></h2>
+    <p class="contact-desc">
+      AI research, computer vision, and intelligent systems — I'm always looking to collaborate on challenging problems. Based in Luxembourg.
+    </p>
+
+    <div class="contact-links">
+      <a href="mailto:eyasuaraya0@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        eyasuaraya0@gmail.com
+      </a>
+
+      <a href="https://www.linkedin.com/in/eyasu-araya-b9197a192/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+
+      <a href="https://github.com/EyasuTes" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+
+      <a href="tel:+352661547861" class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +352 661 547 861
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>// Built with care · Eyasu T. Araya · Luxembourg 2025</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
