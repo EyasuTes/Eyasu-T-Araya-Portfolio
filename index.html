@@ -905,6 +905,35 @@
   background: rgba(255, 255, 255, 0.18);
   transform: translateX(4px);
 }
+  .award-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.award-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.award-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: var(--accent2);
+  opacity: 0.8;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.award-item:hover .award-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
