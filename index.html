@@ -324,7 +324,89 @@
     bottom: -100px;
     left: 200px;
   }
+/* Better scaling for large desktop monitors */
+@media (min-width: 1400px) {
+  .hero-grid {
+    max-width: 1400px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem 7rem;
+  }
 
+  h1 {
+    font-size: clamp(4.5rem, 5.5vw, 6.5rem);
+  }
+
+  .hero-label {
+    font-size: 0.9rem;
+  }
+
+  .hero-desc {
+    max-width: 680px;
+    font-size: 1.25rem;
+    line-height: 1.9;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.9rem 2.1rem;
+  }
+
+  .photo-frame {
+    width: 310px;
+    height: 310px;
+  }
+
+  .hero-stats {
+    max-width: 520px;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 1.8rem;
+  }
+
+  .stat-num {
+    font-size: 2.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra-large monitor scaling */
+@media (min-width: 1800px) {
+  .hero-grid {
+    max-width: 1550px;
+    gap: 4rem 8rem;
+  }
+
+  h1 {
+    font-size: clamp(5.5rem, 5.8vw, 7.5rem);
+  }
+
+  .hero-desc {
+    max-width: 760px;
+    font-size: 1.35rem;
+  }
+
+  .photo-frame {
+    width: 360px;
+    height: 360px;
+  }
+
+  .hero-stats {
+    max-width: 600px;
+  }
+
+  .stat-card {
+    padding: 2rem;
+  }
+
+  .stat-num {
+    font-size: 3.2rem;
+  }
+}
   section {
     padding: 6rem 4rem;
     max-width: 1100px;
