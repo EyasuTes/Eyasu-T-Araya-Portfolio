@@ -6,1032 +6,7 @@
 <title>Eyasu T. Araya — AI & Computer Vision Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0e17;
-    --surface: #111827;
-    --surface2: #1a2235;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.15);
-    --text: #e8edf5;
-    --muted: #7d8fa8;
-    --accent: #3b82f6;
-    --accent2: #06b6d4;
-    --accent3: #8b5cf6;
-    --green: #10b981;
-    --gold: #f59e0b;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 4rem;
-    background: rgba(10,14,23,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--accent2);
-    letter-spacing: 0.08em;
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    font-size: 0.85rem;
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7rem 4rem 4rem;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-}
-
-.hero-grid {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  grid-template-areas:
-    "intro photo"
-    "intro stats";
-  align-items: center;
-  gap: 2rem 5rem;
-}
-
-.hero-grid > div:first-child {
-  grid-area: intro;
-}
-
-.hero-photo-wrap {
-  grid-area: photo;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-stats {
-  grid-area: stats;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  width: 100%;
-  max-width: 430px;
-  margin: 0 auto;
-}
-
-.hero-desc {
-  color: var(--muted);
-  font-size: 1.05rem;
-  max-width: 560px;
-  margin: 0 0 2rem;
-  line-height: 1.8;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.photo-frame {
-  width: 260px;
-  height: 260px;
-}
-  @media (max-width: 900px) {
-  .hero {
-    padding: 6rem 2rem 3rem;
-    text-align: center;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "intro"
-      "photo"
-      "stats";
-    gap: 2rem;
-  }
-
-  .hero-desc {
-    margin: 0 auto 2rem;
-  }
-
-  .hero-cta {
-    justify-content: center;
-  }
-
-  .photo-frame {
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero-stats {
-    max-width: 360px;
-  }
-}
-  .hero-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--accent2);
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-  }
-
-  .hero-label::before { content: '// '; opacity: 0.5; }
-
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    line-height: 1.1;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  h1 em { font-style: italic; color: var(--accent2); }
-
-
-  .btn {
-    padding: 0.75rem 1.75rem;
-    border-radius: 6px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-  }
-
-  .btn-primary:hover {
-    background: #2563eb;
-    transform: translateY(-1px);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border2);
-  }
-
-  .btn-ghost:hover {
-    background: var(--surface);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-
-  .photo-frame {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 2px solid var(--border2);
-    background: var(--surface);
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 6px rgba(6,182,212,0.08), 0 0 0 12px rgba(59,130,246,0.05);
-    transition: box-shadow 0.3s;
-    cursor: pointer;
-  }
-
-  .photo-frame:hover {
-    box-shadow: 0 0 0 6px rgba(6,182,212,0.18), 0 0 0 14px rgba(59,130,246,0.1);
-  }
-
-  .photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .stat-card:hover {
-    border-color: var(--border2);
-    transform: translateY(-2px);
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-  }
-
-  .stat-card.blue::before { background: var(--accent); }
-  .stat-card.cyan::before { background: var(--accent2); }
-  .stat-card.purple::before { background: var(--accent3); }
-  .stat-card.green::before { background: var(--green); }
-
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-  }
-
-  .stat-card.blue .stat-num { color: var(--accent); }
-  .stat-card.cyan .stat-num { color: var(--accent2); }
-  .stat-card.purple .stat-num { color: var(--accent3); }
-  .stat-card.green .stat-num { color: var(--green); }
-
-  .bg-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.12;
-  }
-
-  .glow1 {
-    width: 600px;
-    height: 600px;
-    background: var(--accent);
-    top: -200px;
-    right: -100px;
-  }
-
-  .glow2 {
-    width: 400px;
-    height: 400px;
-    background: var(--accent3);
-    bottom: -100px;
-    left: 200px;
-  }
-/* Better scaling for large desktop monitors */
-@media (min-width: 1400px) {
-  .hero-grid {
-    max-width: 1400px;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 3rem 7rem;
-  }
-
-  h1 {
-    font-size: clamp(4.5rem, 5.5vw, 6.5rem);
-  }
-
-  .hero-label {
-    font-size: 0.9rem;
-  }
-
-  .hero-desc {
-    max-width: 680px;
-    font-size: 1.25rem;
-    line-height: 1.9;
-  }
-
-  .btn {
-    font-size: 1rem;
-    padding: 0.9rem 2.1rem;
-  }
-
-  .photo-frame {
-    width: 310px;
-    height: 310px;
-  }
-
-  .hero-stats {
-    max-width: 520px;
-    gap: 1.5rem;
-  }
-
-  .stat-card {
-    padding: 1.8rem;
-  }
-
-  .stat-num {
-    font-size: 2.8rem;
-  }
-
-  .stat-label {
-    font-size: 0.9rem;
-  }
-}
-
-/* Extra-large monitor scaling */
-@media (min-width: 1800px) {
-  .hero-grid {
-    max-width: 1550px;
-    gap: 4rem 8rem;
-  }
-
-  h1 {
-    font-size: clamp(5.5rem, 5.8vw, 7.5rem);
-  }
-
-  .hero-desc {
-    max-width: 760px;
-    font-size: 1.35rem;
-  }
-
-  .photo-frame {
-    width: 360px;
-    height: 360px;
-  }
-
-  .hero-stats {
-    max-width: 600px;
-  }
-
-  .stat-card {
-    padding: 2rem;
-  }
-
-  .stat-num {
-    font-size: 3.2rem;
-  }
-}
-  section {
-    padding: 6rem 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 3rem;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  h2 em { font-style: italic; color: var(--accent2); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.2s;
-  }
-
-  .skill-group:hover { border-color: var(--border2); }
-
-  .skill-group-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 1rem;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    font-size: 0.78rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 4px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    transition: all 0.15s;
-  }
-
-  .tag:hover {
-    border-color: var(--accent);
-    color: var(--text);
-  }
-
-  .timeline { position: relative; }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 1px;
-    background: var(--border);
-  }
-
-  .exp-item {
-    padding-left: 2rem;
-    margin-bottom: 3rem;
-    position: relative;
-  }
-
-  .exp-item::before {
-    content: '';
-    position: absolute;
-    left: -4px;
-    top: 0.45rem;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--accent2);
-    border: 2px solid var(--bg);
-  }
-
-  .exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.4rem;
-  }
-
-  .exp-role {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  .exp-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.73rem;
-    color: var(--muted);
-    white-space: nowrap;
-    margin-left: 1rem;
-  }
-
-  .exp-company {
-    font-size: 0.88rem;
-    color: var(--accent2);
-    margin-bottom: 0.8rem;
-  }
-
-  .exp-bullets { list-style: none; }
-
-  .exp-bullets li {
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-bottom: 0.35rem;
-    padding-left: 1rem;
-    position: relative;
-  }
-
-  .exp-bullets li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 0.75rem;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.75rem;
-    transition: border-color 0.25s, transform 0.25s;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
-
-  .project-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    background: radial-gradient(circle at 60% 0%, rgba(59,130,246,0.06) 0%, transparent 60%);
-    transition: opacity 0.3s;
-    pointer-events: none;
-  }
-
-  .project-card:hover::after { opacity: 1; }
-
-  .project-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
-  }
-
-  .project-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-
-  .project-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.7;
-    flex: 1;
-  }
-
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .tech-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 3px;
-    background: rgba(59,130,246,0.1);
-    color: var(--accent);
-    border: 1px solid rgba(59,130,246,0.25);
-  }
-
-  .project-links {
-    display: flex;
-    gap: 0.75rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .proj-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.73rem;
-    color: var(--muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    transition: color 0.15s;
-    position: relative;
-    z-index: 2;
-  }
-
-  .proj-link:hover { color: var(--accent2); }
-
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .edu-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.75rem;
-    transition: border-color 0.2s;
-  }
-
-  .edu-card:hover { border-color: var(--border2); }
-
-  .edu-school {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-
-  .edu-degree {
-    font-size: 0.88rem;
-    color: var(--accent2);
-    margin-bottom: 0.75rem;
-  }
-
-  .edu-meta {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .edu-gpa { color: var(--green); }
-
-  .edu-courses {
-    margin-top: 1rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1rem;
-  }
-
-  .edu-courses-label {
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .edu-courses-list {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .cert-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .cert-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.4rem 1.5rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .cert-card:hover {
-    border-color: var(--accent2);
-    transform: translateY(-2px);
-  }
-
-  .cert-title {
-    font-size: 0.98rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.35rem;
-  }
-
-  .cert-org {
-    font-size: 0.85rem;
-    color: var(--accent2);
-    margin-bottom: 0.7rem;
-  }
-
-  .cert-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-bottom: 0.9rem;
-  }
-
-  .cert-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  .cert-link:hover { color: var(--accent2); }
-
-  .awards-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .award-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    transition: border-color 0.2s;
-  }
-
-  .award-item:hover { border-color: var(--gold); }
-
-  .award-medal {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-
-  .award-medal.gold {
-    background: rgba(245,158,11,0.15);
-    border: 1px solid rgba(245,158,11,0.3);
-  }
-
-  .award-medal.bronze {
-    background: rgba(180,120,80,0.15);
-    border: 1px solid rgba(180,120,80,0.3);
-  }
-
-  .award-title {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.2rem;
-  }
-
-  .award-sub {
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-
-  .contact-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 3.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  }
-
-  .contact-desc {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 500px;
-    margin: 0 auto 2.5rem;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--border2);
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.88rem;
-    transition: all 0.2s;
-    background: var(--bg);
-    font-family: 'Outfit', sans-serif;
-  }
-
-  .contact-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
-
-  .contact-link svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-    flex-shrink: 0;
-  }
-
-  footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--muted);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-.edu-card-large {
-  grid-column: span 2;
-}
-
-.edu-course-details {
-  margin-top: 1.2rem;
-  display: grid;
-  gap: 0.9rem;
-}
-
-.edu-course-item {
-  padding: 0.9rem 1rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.edu-course-item strong {
-  display: inline-block;
-  font-size: 0.95rem;
-  margin-bottom: 0.25rem;
-}
-
-.course-score {
-  float: right;
-  font-size: 0.85rem;
-  font-weight: 600;
-  opacity: 0.85;
-}
-
-.edu-course-item p {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  opacity: 0.85;
-}
-
-@media (max-width: 768px) {
-  .edu-card-large {
-    grid-column: span 1;
-  }
-
-  .course-score {
-    float: none;
-    display: block;
-    margin-top: 0.2rem;
-  }
-}
-  .project-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.project-links {
-  margin-top: 1.2rem;
-}
-
-.proj-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  background: rgba(255, 255, 255, 0.1);
-  color: inherit;
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.project-card:hover .proj-link {
-  background: rgba(255, 255, 255, 0.18);
-  transform: translateX(4px);
-}
-  .award-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-}
-
-.award-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent2);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.award-arrow {
-  margin-left: auto;
-  font-size: 1.2rem;
-  color: var(--accent2);
-  opacity: 0.8;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.award-item:hover .award-arrow {
-  transform: translateX(4px);
-  opacity: 1;
-}
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { padding: 7rem 1.5rem 3rem; }
-    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-photo-wrap { flex-direction: row; justify-content: center; }
-    .photo-frame { width: 160px; height: 160px; }
-    section { padding: 4rem 1.5rem; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .edu-grid { grid-template-columns: 1fr; }
-    .cert-grid { grid-template-columns: 1fr; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-  }
-  
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -1323,51 +298,351 @@
         </div>
       </div>
 
-      <div class="edu-course-details">
+<div class="edu-course-details">
 
-        <div class="edu-course-item">
-          <strong>Computer Vision and Image Analysis</strong>
-          <span class="course-score">19/20</span>
-          <p>Covered image processing, feature extraction, object recognition, and detection techniques.</p>
-        </div>
-
-        <div class="edu-course-item">
-          <strong>Machine Learning</strong>
-          <span class="course-score">18/20</span>
-          <p>Focused on supervised and unsupervised learning, model evaluation, and statistical data analysis.</p>
-        </div>
-
-        <div class="edu-course-item">
-          <strong>Introduction to Deep Learning</strong>
-          <span class="course-score">16.7/20</span>
-          <p>Studied neural network architectures, optimization methods, and modern training frameworks.</p>
-        </div>
-
-        <div class="edu-course-item">
-          <strong>Autonomous Robot Software</strong>
-          <span class="course-score">15/20</span>
-          <p>Explored robotic software architectures, localization, mapping, motion control, and path planning.</p>
-        </div>
-
-        <div class="edu-course-item">
-          <strong>Connected and Autonomous Vehicles</strong>
-          <span class="course-score">16/20</span>
-          <p>Addressed V2X communication, sensor fusion, perception, and decision-making in autonomous driving.</p>
-        </div>
-
-        <div class="edu-course-item">
-          <strong>Big Data Analytics</strong>
-          <span class="course-score">15/20</span>
-          <p>Worked with large-scale data processing, analytics pipelines, and data-driven decision support.</p>
-        </div>
-
-        <div class="edu-course-item">
-          <strong>Knowledge Discovery and Data Mining</strong>
-          <span class="course-score">15/20</span>
-          <p>Studied pattern discovery, data mining methods, and knowledge extraction from structured data.</p>
-        </div>
-
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Autonomous Robot Software</strong>
+        <p>Explored robotic software architectures, localization, mapping, motion control, and path planning.</p>
       </div>
+      <span class="course-score">15/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+<ul>
+  <li>Built ROS2 nodes for robot teleoperation and remote control.</li>
+  <li>Implemented reactive obstacle avoidance using sensor feedback.</li>
+  <li>Learned EKF-based state estimation and SLAM principles.</li>
+  <li>Designed motion control for stable robot movement.</li>
+  <li>Implemented path following for planned trajectories.</li>
+  <li>Developed path planning for autonomous navigation.</li>
+</ul>
+      </div>
+
+      <div class="course-project">
+        <div class="course-section-title">Remote Controller ROS2</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=RzCq_UbDsGE" target="_blank">
+          <img src="https://img.youtube.com/vi/RzCq_UbDsGE/hqdefault.jpg" alt="Autonomous Robot Software final project video thumbnail">
+          <div class="project-info">
+            <strong>Remote Controller ROS2
+            </strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+            <div class="course-project">
+        <div class="course-section-title">Reactive Obstacle Avoidance</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=O0PrKb6fB0o" target="_blank">
+          <img src="https://img.youtube.com/vi/O0PrKb6fB0o/hqdefault.jpg" alt="Autonomous Robot Software final project video thumbnail">
+          <div class="project-info">
+            <strong>Reactive Obstacle Avoidance
+            </strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+        <div class="course-project">
+        <div class="course-section-title">MSF EKF State Estimator and SLAM</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=ixP1jOY-vno" target="_blank">
+          <img src="https://img.youtube.com/vi/ixP1jOY-vno/hqdefault.jpg" alt="Autonomous Robot Software final project video thumbnail">
+          <div class="project-info">
+            <strong>MSF EKF State Estimator
+            </strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+              <div class="course-project">
+        <div class="course-section-title">Motion Control</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=yvQJLu-gaWA" target="_blank">
+          <img src="https://img.youtube.com/vi/yvQJLu-gaWA/hqdefault.jpg" alt="Autonomous Robot Software final project video thumbnail">
+          <div class="project-info">
+            <strong>Motion Control
+            </strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+              <div class="course-project">
+        <div class="course-section-title">Path Follower</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=Zks2uQprhis" target="_blank">
+          <img src="https://img.youtube.com/vi/Zks2uQprhis/hqdefault.jpg" alt="Autonomous Robot Software final project video thumbnail">
+          <div class="project-info">
+            <strong>Path Follower
+            </strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+                    <div class="course-project">
+        <div class="course-section-title">Path Planner</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=1BOlekyDviU" target="_blank">
+          <img src="https://img.youtube.com/vi/1BOlekyDviU/hqdefault.jpg" alt="Autonomous Robot Software final project video thumbnail">
+          <div class="project-info">
+            <strong>Path Planner
+            </strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </details>
+
+  
+
+  <!-- Connected and Autonomous Vehicles -->
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Connected and Autonomous Vehicles</strong>
+        <p>Addressed V2X communication, sensor fusion, perception, and decision-making in autonomous driving.</p>
+      </div>
+      <span class="course-score">16/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+        <ul>
+          <li>Connected vehicle systems</li>
+          <li>V2X communication</li>
+          <li>Sensor fusion</li>
+          <li>Autonomous driving perception</li>
+          <li>Decision-making and planning</li>
+          <li>CARLA simulation and autonomous vehicle software</li>
+        </ul>
+      </div>
+
+      <div class="course-project">
+        <div class="course-section-title">Final Project</div>
+
+        <a class="project-thumbnail" href="https://www.youtube.com/watch?v=4uEzrLnhkl4" target="_blank">
+          <img src="https://img.youtube.com/vi/4uEzrLnhkl4/hqdefault.jpg" alt="Connected and Autonomous Vehicles project video thumbnail">
+          <div class="project-info">
+            <strong>Self-Driving Car in the CARLA Simulator</strong>
+            <span>Watch project video</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </details>
+  <!-- Computer Vision and Image Analysis -->
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Computer Vision and Image Analysis</strong>
+        <p>Covered image processing, feature extraction, object recognition, and detection techniques.</p>
+      </div>
+      <span class="course-score">19/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+        <ul>
+          <li>Image formation and filtering</li>
+          <li>Feature extraction and matching</li>
+          <li>Classification and Scene Understanding</li>
+          <li>Deep Learning</li>
+          <li>Camera Models</li>
+          <li>Optical Flow</li>
+          <li>Multiview Geometry</li>
+          <li>Pose Estimation</li>
+          <li>Detection and Segmentation</li>
+        </ul>
+      </div>
+
+      <div class="course-project">
+        <div class="course-section-title">Final Project</div>
+
+        <!-- <a class="project-thumbnail" href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">
+          <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/hqdefault.jpg" alt="Computer Vision final project video thumbnail">
+          <div class="project-info">
+            <strong>SPARK 2024: Spacecraft Detection and Segmentation</strong>
+            <span>Watch project video</span>
+          </div>
+        </a> -->
+
+        <!-- Alternative for PPT/PDF: -->
+        <a class="project-thumbnail" href="assets/CV_project.pdf" target="_blank">
+          <img src="assets/CV_project.png" alt="Computer Vision final project thumbnail">
+          <div class="project-info">
+            <strong>SPARK 2024: Spacecraft Detection and Segmentation</strong>
+            <span>Open project presentation</span>
+          </div>
+        </a>
+       
+      </div>
+    </div>
+  </details>
+
+
+  <!-- Machine Learning -->
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Machine Learning</strong>
+        <p>Focused on supervised and unsupervised learning, model evaluation, and statistical data analysis.</p>
+      </div>
+      <span class="course-score">18/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+        <ul>
+          <li>Supervised learning</li>
+          <li>Unsupervised learning</li>
+          <li>Regression and classification</li>
+          <li>Model selection and validation</li>
+          <li>Bias-variance trade-off</li>
+          <li>Evaluation metrics and statistical learning principles</li>
+        </ul>
+      </div>
+
+      <!-- <div class="course-project">
+        <div class="course-section-title">Final Project</div>
+
+        <a class="project-thumbnail" href="assets/ml-final-project.pdf" target="_blank">
+          <img src="assets/ml-project-thumbnail.jpg" alt="Machine Learning final project thumbnail">
+          <div class="project-info">
+            <strong>Machine Learning Final Project</strong>
+            <span>Open project presentation</span>
+          </div>
+        </a>
+      </div> -->
+    </div>
+  </details>
+
+
+  <!-- Introduction to Deep Learning -->
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Introduction to Deep Learning</strong>
+        <p>Studied neural network architectures, optimization methods, and modern training frameworks.</p>
+      </div>
+      <span class="course-score">16.7/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+        <ul>
+          <li>Neural networks and backpropagation</li>
+          <li>Optimization methods</li>
+          <li>Convolutional neural networks</li>
+          <li>Recurrent neural networks</li>
+          <li>Regularization and dropout</li>
+          <li>Deep learning frameworks and model training</li>
+        </ul>
+      </div>
+
+      <!-- <div class="course-project">
+        <div class="course-section-title">Final Project</div>
+
+        <a class="project-thumbnail" href="assets/deep-learning-final-project.pdf" target="_blank">
+          <img src="assets/deep-learning-project-thumbnail.jpg" alt="Deep Learning final project thumbnail">
+          <div class="project-info">
+            <strong>Deep Learning Final Project</strong>
+            <span>Open project presentation</span>
+          </div>
+        </a>
+      </div> -->
+    </div>
+  </details>
+
+
+  <!-- Autonomous Robot Software -->
+  
+
+
+
+  <!-- Big Data Analytics -->
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Big Data Analytics</strong>
+        <p>Worked with large-scale data processing, analytics pipelines, and data-driven decision support.</p>
+      </div>
+      <span class="course-score">15/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+        <ul>
+          <li>Large-scale data processing using Spark</li>
+          <li>Distributed analytics pipelines</li>
+          <li>Data preprocessing and transformation</li>
+          <li>Big data storage concepts</li>
+          <li>Data-driven decision support</li>
+          <li>Scalable analysis workflows</li>
+        </ul>
+      </div>
+
+      <!-- <div class="course-project">
+        <div class="course-section-title">Final Project</div>
+
+        <a class="project-thumbnail" href="assets/big-data-final-project.pdf" target="_blank">
+          <img src="assets/big-data-project-thumbnail.jpg" alt="Big Data Analytics final project thumbnail">
+          <div class="project-info">
+            <strong>Big Data Analytics Final Project</strong>
+            <span>Open project presentation</span>
+          </div>
+        </a>
+      </div> -->
+    </div>
+  </details>
+
+
+  <!-- Knowledge Discovery and Data Mining -->
+  <details class="edu-course-dropdown">
+    <summary>
+      <div>
+        <strong>Knowledge Discovery and Data Mining</strong>
+        <p>Studied pattern discovery, data mining methods, and knowledge extraction from structured data.</p>
+      </div>
+      <span class="course-score">15/20</span>
+    </summary>
+
+    <div class="course-dropdown-content">
+      <div class="course-topics">
+        <div class="course-section-title">Topics Covered</div>
+        <ul>
+          <li>Data mining process</li>
+          <li>Pattern discovery</li>
+          <li>Association rules</li>
+          <li>Clustering methods</li>
+          <li>Classification methods</li>
+          <li>Knowledge extraction from structured datasets</li>
+        </ul>
+      </div>
+<!-- 
+      <div class="course-project">
+        <div class="course-section-title">Final Project</div>
+
+        <a class="project-thumbnail" href="assets/kdd-final-project.pdf" target="_blank">
+          <img src="assets/kdd-project-thumbnail.jpg" alt="Knowledge Discovery and Data Mining final project thumbnail">
+          <div class="project-info">
+            <strong>Knowledge Discovery and Data Mining Final Project</strong>
+            <span>Open project presentation</span>
+          </div>
+        </a>
+      </div> -->
+    </div>
+  </details>
+
+</div>
     </div>
 
     <!-- Bachelor's Degree -->
