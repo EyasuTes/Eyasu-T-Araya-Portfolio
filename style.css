@@ -684,6 +684,14 @@ font-family: 'DM Mono', monospace;
 
 .edu-gpa { color: var(--green); }
 
+.edu-description {
+  max-width: 75ch;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .edu-courses {
 margin-top: 1rem;
 border-top: 1px solid var(--border);
@@ -1446,6 +1454,13 @@ section { padding: 4rem 1.5rem; }
   line-height: 1.35;
 }
 
+.project-info .project-description {
+  margin: 0 0 9px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .project-info span {
   display: inline-flex;
   align-items: center;
@@ -1459,6 +1474,27 @@ section { padding: 4rem 1.5rem; }
 .media-pdf .project-info span {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.edu-cert-list {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.edu-cert-list a {
+  color: inherit;
+  text-decoration-color: var(--border2);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.edu-cert-list a:hover {
+  color: var(--accent2);
 }
 
 
